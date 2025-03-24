@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchoolHub</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; overflow: hidden; }
+        .tab-container { display: flex; background: #333; padding: 10px; }
+        .tab { color: white; padding: 10px 20px; cursor: pointer; border: none; background: none; }
+        .tab:hover, .active { background: #555; }
+        .iframe-container { width: 100vw; height: 100vh; border: none; display: none; }
+        .show { display: block; }
+    </style>
+</head>
+<body>
+    <div class="tab-container">
+        <button class="tab active" onclick="showTab('google')">Google</button>
+        <button class="tab" onclick="showTab('bing')">Bing</button>
+        <button class="tab" onclick="showTab('ai')">AI</button>
+        <button class="tab" onclick="showTab('chat')">Chat</button>
+        
+
+    </div>
+    
+    <iframe id="google" class="iframe-container show" src="https://www.google.com/webhp?igu=1"></iframe>
+    <iframe id="bing" class="iframe-container" src="https://www.bing.com/search?q=Type+here...&form=QBLH&sp=-1&ghc=1&lq=0&pq=type+here...&sc=12-12&qs=n&sk=&cvid=D92F6F02E7E1409C99C3FFB1549717DA&ghsh=0&ghacc=0&ghpl="></iframe>
+    <iframe id="ai" class="iframe-container" src="https://deepai.org/"></iframe>
+        <iframe id="chat" class="iframe-container" src="https://inkboym.github.io/chat/"></iframe>
+    
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.iframe-container').forEach(iframe => iframe.classList.remove('show'));
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('show');
+            document.querySelector(button[onclick="showTab('${tabId}')"]).classList.add('active');
+        }
+    </script>
+</body>
+</html>
