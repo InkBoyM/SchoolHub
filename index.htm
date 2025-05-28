@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SchoolHub</title>
+    <title>Clever | Teacher Page</title>
+     <link rel="icon" href="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hackemos.xyz&size=256" type="favicon/png">
+
     <style>
         body { font-family: Arial, sans-serif; margin: 0; overflow: hidden; }
         .tab-container { display: flex; background: #333; padding: 10px; }
@@ -17,14 +19,17 @@
     <div class="tab-container">
         <button class="tab active" onclick="showTab('google')">Google</button>
         <button class="tab" onclick="showTab('bing')">Bing</button>
-        <button class="tab" onclick="showTab('ai')">AI</button>
-        <button class="tab" onclick="showTab('chat')">Chat</button>
+        <button class="tab" onclick="showTab('tv')">Madegg TV</button>
+        <button class="tab" onclick="showTab('ai')">Madegg AI</button>
+                <button class="tab" onclick="showTab('spanish')">SpanishHacks</button>
+
     </div>
     
     <embed id="google" class="embed-container show" src="https://www.google.com/webhp?igu=1" sandbox="allow-scripts allow-same-origin"></embed>
     <embed id="bing" class="embed-container" src="https://www.bing.com/search?q=Type+here...&form=QBLH" sandbox="allow-scripts allow-same-origin"></embed>
-    <embed id="ai" class="embed-container" src="Coming Soon" sandbox="allow-scripts allow-same-origin"></embed>
-    <embed id="chat" class="embed-container" src="https://inkboym.github.io/chat/" sandbox="allow-scripts allow-same-origin"></embed>
+    <embed id="tv" class="embed-container" src="https://madegg4ever.teleporthq.app/newtab" sandbox="allow-scripts allow-same-origin"></embed>
+    <embed id="ai" class="embed-container" src="https://notmadeggoffical.github.io/madegg/" sandbox="allow-scripts allow-same-origin"></embed>
+    <embed id="spanish" class="embed-container" src="https://notmadeggoffical.github.io/spanishhacks/" sandbox="allow-scripts allow-same-origin"></embed>
 
     <script>
         function showTab(tabId) {
