@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SchoolHub</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+scroll-behavior: smooth;
+background: #111;
+color: white;
+overflow-x: hidden;
+}
+
+section {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 2em;
+}
+
+h1, h2 {
+text-align: center;
+margin-bottom: 1em;
+}
+
+.btn-group {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 1em;
+margin-top: 2em;
+}
+
+button, a.button {
+padding: 0.8em 1.5em;
+background-color: #00bcd4;
+border: none;
+border-radius: 5px;
+color: white;
+font-size: 1rem;
+cursor: pointer;
+text-decoration: none;
+transition: background 0.3s ease;
+}
+
+button:hover, a.button:hover {
+background-color: #0097a7;
+}
+
+.down-arrow {
+position: absolute;
+bottom: 20px;
+font-size: 2em;
+animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(10px); }
+}
+
+ul {
+list-style-type: disc;
+margin: 1em 0;
+}
+
+ul li {
+margin: 0.5em 0;
+}
+
+.spacer {
+height: 50px;
+}
+</style>
+</head>
+<body>
+
+<!-- First Section -->
+<section id="section1">
+<h1>SchoolHub</h1>
+<h2>Your unblocked search engine & games</h2>
+<div class="btn-group">
+<button onclick="document.getElementById('section2').scrollIntoView({behavior: 'smooth'})">What's There?</button>
+<button onclick="document.getElementById('section3').scrollIntoView({behavior: 'smooth'})">Download</button>
+<a class="button" href="#section1">Back to Top</a>
+</div>
+<div class="down-arrow">⬇</div>
+</section>
+
+<!-- Second Section -->
+<section id="section2">
+<h1>What is there?</h1>
+<ul>
+<li>e</li>
+<li>e</li>
+<li>e</li>
+<li>e</li>
+<li>e</li>
+</ul>
+</section>
+
+<!-- Third Section -->
+<section id="section3">
+<h1>Download Now</h1>
+<div class="btn-group">
+<a class="button" href="https://e.com" target="_blank">Download File</a>
+<a class="button" href="https://3433.com" target="_blank">How to Setup</a>
+</div>
+</section>
+
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+// Animate each section in and out
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray("section").forEach(section => {
+const elements = section.querySelectorAll("h1, h2, ul, button, a");
+
+gsap.from(elements, {
+opacity: 0,
+y: 50,
+duration: 1,
+stagger: 0.2,
+scrollTrigger: {
+trigger: section,
+start: "top 80%",
+toggleActions: "play none none reverse"
+}
+});
+});
+</script>
+</body>
+</html>
+
