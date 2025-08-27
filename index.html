@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clever | Teacher Page</title>
+<link rel="icon" href="https://file.garden/Z84K-3LvSFmBbG1a/image-removebg-preview.png" type="favicon/png">
+
+<style>
+body { font-family: Arial, sans-serif; margin: 0; overflow: hidden; }
+.tab-container { display: flex; background: #333; padding: 10px; }
+.tab { color: white; padding: 10px 20px; cursor: pointer; border: none; background: none; transition: transform 0.1s ease-in-out; }
+.tab:hover, .active { background: #555; }
+.tab:hover { transform: translateY(3px); }
+.embed-container { width: 100vw; height: 100vh; border: none; display: none; }
+.show { display: block; }
+
+/* Style for the Tab Cloaker Menu */
+.tab-cloaker-container {
+display: none;
+position: absolute;
+top: 50px;
+left: 0;
+background-color: #333;
+padding: 20px;
+border-radius: 5px;
+width: 200px;
+z-index: 1000;
+}
+.tab-cloaker-container.show {
+display: block;
+}
+.tab-cloaker-container select, .tab-cloaker-container input, .tab-cloaker-container button {
+width: 100%;
+margin: 10px 0;
+padding: 5px;
+font-size: 14px;
+border: 1px solid #555;
+background-color: #222;
+color: white;
+}
+.tab-cloaker-container button {
+background-color: #555;
+cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="tab-container">
+<button class="tab active" onclick="showTab('google')">Google</button>
+<button class="tab" onclick="showTab('bing')">Bing</button>
+<button class="tab" onclick="showTab('tv')">Madegg TV</button>
+<button class="tab" onclick="showTab('ai')">Madegg AI</button>
+<button class="tab" onclick="showTab('spanish')">SpanishHacks</button>
+<button class="tab" onclick="toggleTabCloaker()">Tab Cloaker</button>
+</div>
+
+<div class="tab-cloaker-container" id="tabCloakerMenu">
+<h3>Tab Cloaker</h3>
+<h4>Type your own title and choose an image for the logo</h4>
+<input type="text" id="customTitle" placeholder="Enter custom title">
+<input type="file" id="faviconUpload" accept="image/*">
+<button onclick="setCustomFavicon()">Set Custom</button>
+
+<h4>or choose from pre made templates (reccomended)</h4>
+<select id="predefinedFavicon">
+<option value="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Google_Classroom_Logo.svg/1200px-Google_Classroom_Logo.svg.png">Google Classroom (title)</option>
+<option value="https://www.google.com/favicon.ico">Google Search (title)</option>
+
+</select>
+<select id="predefinedTitle">
+<option value="Home">Gclass (icon) </option>
+<option value="Google">Google Search (icon)</option>
+</select>
+<button onclick="setPredefinedFavicon()">Set Predefined</button>
+</div>
+
+<embed id="google" class="embed-container show" src="https://www.google.com/webhp?igu=1" sandbox="allow-scripts allow-same-origin"></embed>
+<embed id="bing" class="embed-container" src="https://www.bing.com/search?q=Type+here...&form=QBLH" sandbox="allow-scripts allow-same-origin"></embed>
+<embed id="tv" class="embed-container" src="https://madegg4ever.teleporthq.app/newtab" sandbox="allow-scripts allow-same-origin"></embed>
+<embed id="ai" class="embed-container" src="https://notmadeggoffical.github.io/madegg/" sandbox="allow-scripts allow-same-origin"></embed>
+<embed id="spanish" class="embed-container" src="https://notmadeggoffical.github.io/spanishhacks/" sandbox="allow-scripts allow-same-origin"></embed>
+
+<script>
+function showTab(tabId) {
+document.querySelectorAll('.embed-container').forEach(embed => embed.classList.remove('show'));
+document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+document.getElementById(tabId).classList.add('show');
+document.querySelector(`button[onclick="showTab('${tabId}')"]`).classList.add('active');
+}
+
+// Show/Hide Tab Cloaker menu
+function toggleTabCloaker() {
+const cloakerMenu = document.getElementById('tabCloakerMenu');
+cloakerMenu.classList.toggle('show');
+}
+
+// Set custom favicon and title
+function setCustomFavicon() {
+const title = document.getElementById('customTitle').value;
+const favicon = document.getElementById('faviconUpload').files[0];
+
+if (favicon) {
+const reader = new FileReader();
+reader.onload = function(event) {
+document.querySelector('link[rel="icon"]').href = event.target.result;
+};
+reader.readAsDataURL(favicon);
+}
+
+if (title) {
+document.title = title;
+}
+}
+
+// Set predefined favicon and title
+function setPredefinedFavicon() {
+const selectedFavicon = document.getElementById('predefinedFavicon').value;
+const selectedTitle = document.getElementById('predefinedTitle').value;
+
+document.querySelector('link[rel="icon"]').href = selectedFavicon;
+document.title = selectedTitle;
+}
+</script>
+</body>
+</html>
+
